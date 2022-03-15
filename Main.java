@@ -11,6 +11,7 @@ public class Main {
 		StringBuilder bitmasking = new StringBuilder("0000000000000000");
 		String palavra = "";
 		int pos = 0;
+		int result = 0;
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -21,10 +22,12 @@ public class Main {
 
 			switch (opcao) {
 			case 1: // operação AND
+				
 				System.out.print("\nInforme os dois valores: (0xNNNN)\n");
 				first = BitUtils.convertHexBin(scanner.next());
 				second = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
+				
 				BitUtils.display(first);
 				System.out.println();
 				BitUtils.display(second);
@@ -32,12 +35,15 @@ public class Main {
 				System.out.println("\n---- & ------------------------------------------");
 				BitUtils.display(resultado);
 				System.out.println("\n");
+				
 				break;
 			case 2: // operação OU
+				
 				System.out.print("\nInforme os dois valores: (0xNNNN)\n");
 				first = BitUtils.convertHexBin(scanner.next());
 				second = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
+				
 				BitUtils.display(first);
 				System.out.println();
 				BitUtils.display(second);
@@ -45,12 +51,15 @@ public class Main {
 				System.out.println("\n---- | ------------------------------------------");
 				BitUtils.display(resultado);
 				System.out.println("\n");
+				
 				break;
 			case 3: // operação OU exclusivo
+				
 				System.out.print("Informe os dois valores: (0xNNNN)\n");
 				first = BitUtils.convertHexBin(scanner.next());
 				second = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
+				
 				BitUtils.display(first);
 				System.out.println();
 				BitUtils.display(second);
@@ -58,36 +67,45 @@ public class Main {
 				System.out.println("\n---- ^ ------------------------------------------");
 				BitUtils.display(resultado);
 				System.out.println("\n");
+				
 				break;
 			case 4: // Complemento
+				
 				System.out.print("Informe o valor: (0xNNNN)\n");
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
+				
 				BitUtils.display(first);
 				resultado = ~first;
 				System.out.println("\n--- ~ -------------------------------------------");
 				BitUtils.display(resultado);
 				System.out.println("\n");
 				break;
+				
 			case 5: // Deslocamento à esquerda
+				
 				System.out.print("Informe o valor: (0xNNNN)\n");
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
+				
 				BitUtils.display(first);
 				resultado = first << 1;
 				System.out.println("\n--- << --------------------------------------------");
 				BitUtils.display(resultado);
 				System.out.println("\n");
+				
 				break;
 			case 6: // Deslocamento à direita
 				System.out.print("Informe o valor: (0xNNNN)\n");
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
+				
 				BitUtils.display(first);
 				resultado = first >> 1;
 				System.out.println("\n--- >> --------------------------------------------");
 				BitUtils.display(resultado);
 				System.out.println("\n");
+				
 				break;
 
 			case 7: // Bitmask à direita
@@ -112,7 +130,7 @@ public class Main {
 				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
 				BitUtils.display(Integer.parseInt(bitmasking.toString(), 2));
-				int result = Integer.parseInt(palavra, 2) & Integer.parseInt(bitmasking.toString(), 2);
+				result = Integer.parseInt(palavra, 2) & Integer.parseInt(bitmasking.toString(), 2);
 				System.out.println("\n---- & ------------------------------------------");
 				BitUtils.display(result);
 				System.out.println("\n");
@@ -124,25 +142,25 @@ public class Main {
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
 
-				String palavra2 = Integer.toBinaryString(first);
-				StringBuilder bitmasking2 = new StringBuilder("0000000000000000");
-				int pos2;
+				palavra = Integer.toBinaryString(first);
+				bitmasking = new StringBuilder("0000000000000000");
 
 				System.out.println("Deseja presevar quantos bits mais a esquerda? ");
-				pos2 = scanner.nextInt();
+				pos = scanner.nextInt();
 				System.out.println();
 
-				for (int i = 0; i < pos2; i++) {
-					bitmasking2.setCharAt(i, '1');
+				for (int i = 0; i < pos; i++) {
+					bitmasking.setCharAt(i, '1');
 				}
 
-				BitUtils.display(Integer.parseInt(palavra2, 2));
+				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
-				BitUtils.display(Integer.parseInt(bitmasking2.toString(), 2));
-				int result2 = Integer.parseInt(palavra2, 2) & Integer.parseInt(bitmasking2.toString(), 2);
+				BitUtils.display(Integer.parseInt(bitmasking.toString(), 2));
+				result = Integer.parseInt(palavra, 2) & Integer.parseInt(bitmasking.toString(), 2);
 				System.out.println("\n---- & ------------------------------------------");
-				BitUtils.display(result2);
+				BitUtils.display(result);
 				System.out.println("\n");
+				
 				break;
 
 			case 9: // Bitmask de 1s à direita
@@ -151,27 +169,27 @@ public class Main {
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
 
-				String palavra3 = Integer.toBinaryString(first);
-				StringBuilder bitmasking3 = new StringBuilder("0000000000000000");
-				int pos3;
+				palavra = Integer.toBinaryString(first);
+				bitmasking = new StringBuilder("0000000000000000");
 
 				System.out.println("Deseja presevar quantos bits mais a esquerda? ");
-				pos3 = scanner.nextInt();
+				pos = scanner.nextInt();
 				System.out.println();
 
-				pos3 = 16 - pos3;
+				pos = 16 - pos;
 
-				for (int i = pos3; i < 16; i++) {
-					bitmasking3.setCharAt(i, '1');
+				for (int i = pos; i < 16; i++) {
+					bitmasking.setCharAt(i, '1');
 				}
 
-				BitUtils.display(Integer.parseInt(palavra3, 2));
+				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
-				BitUtils.display(Integer.parseInt(bitmasking3.toString(), 2));
-				int result3 = Integer.parseInt(palavra3, 2) | Integer.parseInt(bitmasking3.toString(), 2);
+				BitUtils.display(Integer.parseInt(bitmasking.toString(), 2));
+				result = Integer.parseInt(palavra, 2) | Integer.parseInt(bitmasking.toString(), 2);
 				System.out.println("\n---- | ------------------------------------------");
-				BitUtils.display(result3);
+				BitUtils.display(result);
 				System.out.println("\n");
+				
 				break;
 
 			case 10: // Bitmask de 1s - direita
@@ -180,27 +198,25 @@ public class Main {
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
 
-				String palavra4 = Integer.toBinaryString(first);
-				StringBuilder bitmasking4 = new StringBuilder("0000000000000000");
-				int pos4;
+				palavra = Integer.toBinaryString(first);
+				bitmasking = new StringBuilder("0000000000000000");
 
 				System.out.println("Deseja presevar quantos bits mais a direita? ");
-				pos4 = scanner.nextInt();
+				pos = scanner.nextInt();
 				System.out.println();
 
-				for (int i = 0; i < pos4; i++) {
-					bitmasking4.setCharAt(i, '1');
+				for (int i = 0; i < pos; i++) {
+					bitmasking.setCharAt(i, '1');
 				}
 
-				BitUtils.display(Integer.parseInt(palavra4, 2));
+				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
-				BitUtils.display(Integer.parseInt(bitmasking4.toString(), 2));
-				int result4 = Integer.parseInt(palavra4, 2) | Integer.parseInt(bitmasking4.toString(), 2);
+				BitUtils.display(Integer.parseInt(bitmasking.toString(), 2));
+				result = Integer.parseInt(palavra, 2) | Integer.parseInt(bitmasking.toString(), 2);
 				System.out.println("\n---- | ------------------------------------------");
-				BitUtils.display(result4);
-				System.out.printf("\n0x%s | 0x%s = 0x%s\n\n", Integer.toHexString(Integer.parseInt(palavra4, 2)).toUpperCase(), 
-						Integer.toHexString(Integer.parseInt(bitmasking4.toString(), 2)).toUpperCase(),
-						Integer.toHexString(result4).toUpperCase());
+				BitUtils.display(result);
+				System.out.println("\n");
+				
 				break;
 
 			case 11: // Bitmask inverter à direita
@@ -209,27 +225,27 @@ public class Main {
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
 
-				String palavra5 = Integer.toBinaryString(first);
-				StringBuilder bitmasking5 = new StringBuilder("0000000000000000");
-				int pos5;
+				palavra = Integer.toBinaryString(first);
+				bitmasking = new StringBuilder("0000000000000000");
 
 				System.out.println("Deseja presevar quantos bits mais a esquerda? ");
-				pos5 = scanner.nextInt();
+				pos = scanner.nextInt();
 				System.out.println();
 
-				pos5 = 16 - pos5;
+				pos = 16 - pos;
 
-				for (int i = pos5; i < 16; i++) {
-					bitmasking5.setCharAt(i, '1');
+				for (int i = pos; i < 16; i++) {
+					bitmasking.setCharAt(i, '1');
 				}
 
-				BitUtils.display(Integer.parseInt(palavra5, 2));
+				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
-				BitUtils.display(Integer.parseInt(bitmasking5.toString(), 2));
-				int result5 = Integer.parseInt(palavra5, 2) ^ Integer.parseInt(bitmasking5.toString(), 2);
+				BitUtils.display(Integer.parseInt(bitmasking.toString(), 2));
+				result = Integer.parseInt(palavra, 2) ^ Integer.parseInt(bitmasking.toString(), 2);
 				System.out.println("\n---- ^ ------------------------------------------");
-				BitUtils.display(result5);
+				BitUtils.display(result);
 				System.out.println("\n");
+				
 				break;
 
 			case 12: // Bitmask inverter à esquerda
@@ -238,25 +254,25 @@ public class Main {
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
 
-				String palavra6 = Integer.toBinaryString(first);
-				StringBuilder bitmasking6 = new StringBuilder("0000000000000000");
-				int pos6;
+				palavra = Integer.toBinaryString(first);
+				bitmasking = new StringBuilder("0000000000000000");
 
 				System.out.println("Deseja presevar quantos bits mais a direita? ");
-				pos6 = scanner.nextInt();
+				pos = scanner.nextInt();
 				System.out.println();
 
-				for (int i = 0; i < pos6; i++) {
-					bitmasking6.setCharAt(i, '1');
+				for (int i = 0; i < pos; i++) {
+					bitmasking.setCharAt(i, '1');
 				}
 
-				BitUtils.display(Integer.parseInt(palavra6, 2));
+				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
-				BitUtils.display(Integer.parseInt(bitmasking6.toString(), 2));
-				int result6 = Integer.parseInt(palavra6, 2) ^ Integer.parseInt(bitmasking6.toString(), 2);
+				BitUtils.display(Integer.parseInt(bitmasking.toString(), 2));
+				result = Integer.parseInt(palavra, 2) ^ Integer.parseInt(bitmasking.toString(), 2);
 				System.out.println("\n---- ^ ------------------------------------------");
-				BitUtils.display(result6);
+				BitUtils.display(result);
 				System.out.println("\n");
+				
 				break;
 				
 			case 13: // Bitmask com "0x4"
@@ -265,16 +281,17 @@ public class Main {
 				first = BitUtils.convertHexBin(scanner.next());
 				System.out.println();
 
-				String palavra7 = Integer.toBinaryString(first);
+				palavra = Integer.toBinaryString(first);
 				System.out.println();
 
-				BitUtils.display(Integer.parseInt(palavra7, 2));
+				BitUtils.display(Integer.parseInt(palavra, 2));
 				System.out.println();
 				BitUtils.display(BitUtils.convertHexBin("0x4"));
-				int result7 = Integer.parseInt(palavra7, 2) ^ BitUtils.convertHexBin("0x4");
+				result = Integer.parseInt(palavra, 2) ^ BitUtils.convertHexBin("0x4");
 				System.out.println("\n----- ^ -----------------------------------------");
-				BitUtils.display(result7);
+				BitUtils.display(result);
 				System.out.println("\n");
+				
 				break;
 
 			default:
